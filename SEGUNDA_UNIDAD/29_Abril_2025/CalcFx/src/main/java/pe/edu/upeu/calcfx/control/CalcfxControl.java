@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pe.edu.upeu.calcfx.modelo.CalcTO;
+import pe.edu.upeu.calcfx.servicio.CalcRepoSql;
 import pe.edu.upeu.calcfx.servicio.CalcServicioI;
 
 import java.util.List;
@@ -48,9 +49,13 @@ public class CalcfxControl {
     int idx=0;
     boolean edit = true;
 
+    @Autowired
+    CalcRepoSql calcRepoSql;
+
     @FXML
     private void initialize() {
         listar();
+
   }
 
     private void escribirNumero(String numero) {
@@ -168,11 +173,10 @@ public class CalcfxControl {
             if(indexID!=-1){
                 servicioI.update(to,indexID);
             }else{
+                calcRepoSql.guardarEntidad(to);
                 servicioI.save(to);
             }
             listar();
-    txtResultado.setText("");
-
         } catch (Exception e) {
             txtResultado.setText("Error");
             System.out.println(e.getMessage());
@@ -196,8 +200,10 @@ public class CalcfxControl {
 
         result.setCellValueFactory(new PropertyValueFactory<CalcTO,String >("resultado"));
         result.setCellFactory(TextFieldTableCell.<CalcTO>forTableColumn());
+
         addActionButtonsToTable();
-        datos = FXCollections.observableArrayList(lista);
+
+        datos = FXCollections.observableArrayList(calcRepoSql.listarEntidad());
         tableView.setItems(datos);
 
 

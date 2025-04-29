@@ -2,6 +2,8 @@ package pe.edu.upeu.calcfx.modelo;
 
 public class CalcTO {
 
+    int id;
+
     String num1,num2,resultado;
     char operador;
 
@@ -35,5 +37,13 @@ public class CalcTO {
 
     public void setOperador(char operador) {
         this.operador = operador;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
