@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upeu.calcfx.modelo.CalcTO;
 @Repository
 public interface CalcRepository extends JpaRepository<CalcTO, Long> {
-
+    
 }
