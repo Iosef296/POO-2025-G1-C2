@@ -2,6 +2,7 @@ package pe.edu.upeu.sysventas.servicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.sysventas.modelo.VentCarrito;
 import pe.edu.upeu.sysventas.repositorio.VentCarritoRepository;
 
@@ -36,5 +37,12 @@ public class VentCarritoService{
     // Buscar por ID
     public VentCarrito buscarEntidad(Long id) {
         return ventCarritoRepository.findById(id).orElse(null);
+    }
+    public List<VentCarrito> listaCarritoCliente(String dni) {
+        return ventCarritoRepository.listaCarritoCliente(dni);
+    }
+    @Transactional
+    public void deleteCarAll(String dniruc) {
+        ventCarritoRepository.deleteByDniruc(dniruc);
     }
 }
