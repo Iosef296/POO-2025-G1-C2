@@ -2,9 +2,12 @@ package pe.edu.upeu.sysventas.servicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upeu.sysventas.dto.ComboBoxOption;
+import pe.edu.upeu.sysventas.modelo.Categoria;
 import pe.edu.upeu.sysventas.modelo.Marca;
 import pe.edu.upeu.sysventas.repositorio.MarcaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,5 +39,16 @@ public class MarcaService {
     // Buscar por ID
     public Marca buscarEntidad(Long id) {
         return marcaRepository.findById(id).orElse(null);
+    }
+    public List<ComboBoxOption> listarCombobox(){
+        List<ComboBoxOption> listar=new ArrayList<>();
+        ComboBoxOption cb;
+        for(Marca marc : marcaRepository.findAll()) {
+            cb=new ComboBoxOption();
+            cb.setKey(String.valueOf(marc.getIdMarca()));
+            cb.setValue(marc.getNombre());
+            listar.add(cb);
+        }
+        return listar;
     }
 }

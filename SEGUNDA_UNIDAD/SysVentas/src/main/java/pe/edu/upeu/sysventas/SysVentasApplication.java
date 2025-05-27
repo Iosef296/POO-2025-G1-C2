@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
@@ -45,7 +46,8 @@ public class SysVentasApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Scene scene = new Scene(parent);
-		//scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+		scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+		scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("SysAlmacen Spring Java-FX");
 		stage.setResizable(false);
