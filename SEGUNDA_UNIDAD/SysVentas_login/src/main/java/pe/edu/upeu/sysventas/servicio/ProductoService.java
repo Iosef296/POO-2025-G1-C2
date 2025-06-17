@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upeu.sysventas.dto.ModeloDataAutocomplet;
 import pe.edu.upeu.sysventas.modelo.Producto;
 import pe.edu.upeu.sysventas.repositorio.ProductoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,7 +37,7 @@ public class ProductoService {
     public Producto buscarProducto(Long idProducto) {
         return productoRepository.findById(idProducto).orElse(null);
     }
-    /*public List<ModeloDataAutocomplet> listAutoCompletProducto(String
+    public List<ModeloDataAutocomplet> listAutoCompletProducto(String
                                                                        nombre) {
         List<ModeloDataAutocomplet> listarProducto = new ArrayList<>();
         try {
@@ -67,5 +69,5 @@ public class ProductoService {
             logger.error("Error al realizar la busqueda", e);
         }
         return listarProducto;
-    }*/
+    }
 }

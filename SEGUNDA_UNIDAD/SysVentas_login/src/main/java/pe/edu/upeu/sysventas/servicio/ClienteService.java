@@ -34,12 +34,12 @@ public class ClienteService{
     }
 
     // Delete
-    public void eliminarRegEntidad(Long id) {
+    public void eliminarRegEntidad(String id) {
         clienteRepository.deleteById(id);
     }
 
     // Buscar por ID
-    public Cliente buscarEntidad(Long id) {
+    public Cliente buscarEntidad(String id) {
         return clienteRepository.findById(id).orElse(null);
     }
     public List<ModeloDataAutocomplet> listAutoCompletCliente() {

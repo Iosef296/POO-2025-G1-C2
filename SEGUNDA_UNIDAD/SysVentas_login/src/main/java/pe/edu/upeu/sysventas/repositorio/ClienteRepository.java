@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upeu.sysventas.modelo.Cliente;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, String> {
 } 
